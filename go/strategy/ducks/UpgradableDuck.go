@@ -7,10 +7,14 @@ import (
 
 type UpgradableDuck struct {
 	BaseDuck
-	flyStrategy.IFlyable
-	quackStrategy.IQuackable
+	IFlyable flyStrategy.IFlyable
+	IQuackable quackStrategy.IQuackable
 }
 
-//func (upgradableDuck *UpgradableDuck) SetFlyStrategy(flyStrategy flyStrategy.IFlyable) {
-//	upgradableDuck.Fly = flyStrategy.Fly
-//}
+func (upgradableDuck UpgradableDuck) Quack(){
+	upgradableDuck.IQuackable.Quack()
+}
+
+func (upgradableDuck UpgradableDuck) Fly(){
+	upgradableDuck.IFlyable.Fly()
+}
